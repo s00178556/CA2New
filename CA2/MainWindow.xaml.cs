@@ -24,12 +24,14 @@ namespace CA2
         List<Activity> allActivities = new List<Activity>();
         List<Activity> selectedActivities = new List<Activity>();
         List<Activity> filteredActivities = new List<Activity>();
+        decimal totalCost = 0;
 
 
 
-        //this piece of code is for the font of the WPF APP
+
         public MainWindow()
         {
+            //this piece of code is for the font of the WPF APP
             InitializeComponent();
             this.FontFamily = new FontFamily("Comic Sans MS");
 
@@ -44,9 +46,9 @@ namespace CA2
             {
                 Name = "Treking",
                 Description = "Instructor led group trek through local mountains.",
-                ActivityDate = new DateTime(2019, 07, 04),
+                ActivityDate =  new DateTime(2019, 07, 04),
                 TypeOfActivity = ActivityType.Land,
-                Cost = 20m
+                Cost = 20m,
             };
 
             Activity l2 = new Activity()
@@ -131,14 +133,20 @@ namespace CA2
             allActivities.Add(a1);
             allActivities.Add(a2);
             allActivities.Add(a3);
-         
-            //display in the list
 
+            //display in the list
             allActivities.Sort();
-            //allActivities.ForEach(Activity => Console.WriteLine(Activity.Name));
+
+
+            //total cost
+            textblockTotalCost.Text = Activity.TotalCost.ToString();
+
+            //allActivities.ForEach(Activity => Console.WriteLine(Activity.Name)); (experimenting code)
 
             lbxAllActivities.ItemsSource = allActivities;
             lbxSelectedActivities.ItemsSource = selectedActivities;
+
+
 
         }
 
@@ -154,7 +162,11 @@ namespace CA2
                 //moves activities to the other list
                 allActivities.Remove(selected);
                 selectedActivities.Add(selected);
-                
+
+                //adds the price to the total cost after every activity is added
+                totalCost += selected.Cost;
+                textblockTotalCost.Text = totalCost.ToString();
+
                 //refreshes the screen
                 RefreshScreen();
             }
@@ -164,8 +176,11 @@ namespace CA2
             {
                 MessageBox.Show("Yous have to select an Activity to be displayed");
             }
+
+                    
+
         }
-    
+
 
 
 
@@ -182,6 +197,11 @@ namespace CA2
                 allActivities.Add(selected);
                 selectedActivities.Remove(selected);
 
+
+                //This removes the activity price from the list when it removed
+                totalCost -= selected.Cost;
+                textblockTotalCost.Text = totalCost.ToString();
+
                 //refreshes the screen
                 RefreshScreen();
             }
@@ -191,8 +211,10 @@ namespace CA2
             {
                 MessageBox.Show("You have to select an Activity to remove from the listbox");
             }
+
+
         }
-    
+
 
         private void RefreshScreen()
         {
@@ -208,14 +230,14 @@ namespace CA2
         {
             filteredActivities.Clear();
 
-            if(radioAll.IsChecked == true)
+            if (radioAll.IsChecked == true)
             {
                 //show all activities
                 RefreshScreen();
             }
 
             //Land Activities
-            else if(radioLand.IsChecked == true)
+            else if (radioLand.IsChecked == true)
             {
                 //show all land activities
                 foreach (Activity activity in allActivities)
@@ -225,12 +247,13 @@ namespace CA2
                         filteredActivities.Add(activity);
                         lbxAllActivities.ItemsSource = null;
                         lbxAllActivities.ItemsSource = filteredActivities;
+
                     }
                 }
             }
 
             //Air Activities
-            else if(radioAir.IsChecked == true)
+            else if (radioAir.IsChecked == true)
             {
                 //show all air activities
                 foreach (Activity activity in allActivities)
@@ -258,6 +281,40 @@ namespace CA2
                     }
                 }
             }
+
+
+        }
+
+        //This is used to create the description  to be shown on the textblock
+        private void lbxAllActivities_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Activity selected = lbxAllActivities.SelectedItem as Activity;
+
+            if (selected != null)
+            {
+
+                //display tblk description
+
+                textblockDescription.Text = selected.Description;
+
+            }
+        }
+
+
+        //This is used to create the description  to be shown on the textblock but when the other listbox is selected
+        private void lbxSelectedActivities_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Activity selected = lbxSelectedActivities.SelectedItem as Activity;
+
+            if (selected != null)
+            {
+
+                //display tblk description
+
+                textblockDescription.Text = selected.Description;
+
+            }
+            
         }
     }
 }

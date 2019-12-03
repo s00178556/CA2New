@@ -13,18 +13,18 @@
         </Grid.ColumnDefinitions>
         <RadioButton x:Name="radioAll" Content="All" HorizontalAlignment="Left" Margin="41,107,0,0" VerticalAlignment="Top" Height="15" Width="33" Click="radioAll_Click"/>
         <RadioButton x:Name="radioAir" Content="Air" HorizontalAlignment="Left" Margin="41,223,0,0" VerticalAlignment="Top" Height="15" Width="34" Click="radioAll_Click"/>
-        <RadioButton x:Name="radioWater" Content="Water" HorizontalAlignment="Left" Margin="41,185,0,0" VerticalAlignment="Top" Height="15" Width="50" Click="radioAll_Click"/>
+        <RadioButton x:Name="radioWater" Content="Water" HorizontalAlignment="Left" Margin="41,185,0,0" VerticalAlignment="Top" Height="15" Width="62" Click="radioAll_Click"/>
         <RadioButton x:Name="radioLand" Content="Land" HorizontalAlignment="Left" Margin="41,145,0,0" VerticalAlignment="Top" Height="15" Width="45" Click="radioAll_Click"/>
-        <ListBox x:Name="lbxAllActivities" HorizontalAlignment="Left" Height="202" Margin="145,107,0,0" VerticalAlignment="Top" Width="225"/>
-        <ListBox x:Name="lbxSelectedActivities" HorizontalAlignment="Left" Height="202" Margin="492,107,0,0" VerticalAlignment="Top" Width="225" Grid.ColumnSpan="2"/>
+        <ListBox x:Name="lbxAllActivities" HorizontalAlignment="Left" Height="180" Margin="145,107,0,0" VerticalAlignment="Top" Width="220" SelectionChanged="lbxAllActivities_SelectionChanged"/>
+        <ListBox x:Name="lbxSelectedActivities" HorizontalAlignment="Left" Height="180" Margin="492,107,0,0" VerticalAlignment="Top" Width="228" Grid.ColumnSpan="2" SelectionChanged="lbxSelectedActivities_SelectionChanged"/>
         <Button x:Name="btnAdd" Content="&gt; &gt;" HorizontalAlignment="Left" Margin="389,145,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="btnAdd_Click"/>
         <Button x:Name="btnRemove" Content="&lt; &lt;" HorizontalAlignment="Left" Margin="389,208,0,0" VerticalAlignment="Top" Width="75" Height="20" RenderTransformOrigin="0.137,0.663" Click="btnRemove_Click"/>
         <Label Content="Selected activities" HorizontalAlignment="Left" Margin="492,64,0,0" VerticalAlignment="Top" Width="114" Height="26" Grid.ColumnSpan="2"/>
         <Label Content="All activities" HorizontalAlignment="Left" Margin="145,64,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.888,0.69" Width="100" Height="26"/>
-        <Label Content="Description" HorizontalAlignment="Left" Margin="145,326,0,0" VerticalAlignment="Top" Width="100" Height="26"/>
+        <Label Content="Description" HorizontalAlignment="Left" Margin="145,292,0,0" VerticalAlignment="Top" Width="100" Height="26"/>
         <Label Content="Total Cost" HorizontalAlignment="Left" Margin="492,33,0,0" VerticalAlignment="Top" Width="98" Height="26" Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="textblockTotalCost" Grid.Column="1" HorizontalAlignment="Left" Margin="125,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="€"/>
-        <TextBlock x:Name="textblockDescription" HorizontalAlignment="Left" Margin="145,371,0,0" TextWrapping="Wrap" Text="Desc €" VerticalAlignment="Top" Height="25" Width="262"/>
-        <Label Content="Activity Plan" Foreground="Aqua" Padding="130,70,0,0" FontSize="40" Margin="10,-54,122,326"/>
+        <TextBlock x:Name="textblockTotalCost"  Grid.Column="1" HorizontalAlignment="Left" Margin="125,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="€"/>
+        <TextBlock x:Name="textblockDescription" HorizontalAlignment="Left" Margin="145,323,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="87" Width="277"/>
+        <Label Content="Activity Planner" Foreground="Aqua" Padding="130,70,0,0" FontSize="40" Margin="10,-54,57,298"/>
     </Grid>
 </Window>
